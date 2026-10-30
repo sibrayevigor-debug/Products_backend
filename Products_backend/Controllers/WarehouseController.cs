@@ -1,0 +1,26 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using Products_backend.Data_Transfer_Objects;
+using Products_backend.models;
+using Products_backend.Services;
+
+namespace Products_backend.Controllers
+{
+    [ApiController]
+    [Route("api/warehouse")]
+    public class WarehouseController : Controller
+    {
+        private readonly IWarehouseService _warehouseService;
+
+        public WarehouseController(WarehouseService warehouseService)
+        {
+            _warehouseService = warehouseService;
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<WarehouseDto>>> Get(CancellationToken cancellationToken)
+        {
+            var products = await _warehouseService.GetAllAsync(cancellationToken);
+            return Ok(products);
+        }
+    }
+}
