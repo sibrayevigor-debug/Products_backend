@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Products_backend.models;
 
 namespace Products_backend.Controllers
 {

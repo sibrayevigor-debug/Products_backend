@@ -1,5 +1,11 @@
 
+using Microsoft.EntityFrameworkCore;
+using Products_backend;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // 1. РЕГИСТРАЦИЯ СЛУЖБ SWAGGER
 builder.Services.AddControllers();
@@ -31,5 +37,14 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+
+// НАЧАЛО БЛОКА АВТОМАТИЧЕСКИХ МИГРАЦИЙ
+using (var scope = app.Services.CreateScope())
+{
+    // Безопасно достаем контекст базы данных из сервис-провайдера
+    var dbContext = scope.ServiceProvider.GetService<AppDbContext>();
+    await dbContext.Database.MigrateAsync();
+}
 
 app.Run();

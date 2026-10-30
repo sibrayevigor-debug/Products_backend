@@ -1,4 +1,4 @@
-namespace Products_backend
+namespace Products_backend.models
 {
     public class WeatherForecast
     {
