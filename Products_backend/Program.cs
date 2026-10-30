@@ -1,22 +1,35 @@
 
 using Microsoft.EntityFrameworkCore;
 using Products_backend;
+using Products_backend.Services;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
+//DB
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// 1. РЕГИСТРАЦИЯ СЛУЖБ SWAGGER
+// РЕГИСТРАЦИЯ СЛУЖБ SWAGGER
 builder.Services.AddControllers();
 
 // Добавляет генератор Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//Добавляет сервиса
+builder.Services.AddScoped<IWarehouseService, WarehouseService>();
+builder.Services.AddScoped<IProductService, ProductService>();
+
 var app = builder.Build();
 
-// 2. ПОДКЛЮЧЕНИЕ MIDDLEWARE ДЛЯ SWAGGER
+// НАЧАЛО БЛОКА АВТОМАТИЧЕСКИХ МИГРАЦИЙ
+using var scope = app.Services.CreateScope();
+var dbContext = scope.ServiceProvider.GetService<AppDbContext>();
+dbContext?.Database.Migrate();
+
+
+// ПОДКЛЮЧЕНИЕ MIDDLEWARE ДЛЯ SWAGGER
 // Рекомендуется включать Swagger только в среде разработки (Development)
 if (app.Environment.IsDevelopment())
 {
@@ -39,12 +52,6 @@ app.UseAuthorization();
 app.MapControllers();
 
 
-// НАЧАЛО БЛОКА АВТОМАТИЧЕСКИХ МИГРАЦИЙ
-using (var scope = app.Services.CreateScope())
-{
-    // Безопасно достаем контекст базы данных из сервис-провайдера
-    var dbContext = scope.ServiceProvider.GetService<AppDbContext>();
-    await dbContext.Database.MigrateAsync();
-}
+
 
 app.Run();
