@@ -5,8 +5,9 @@ using Products_backend.Data_Transfer_Objects;
 namespace Products_backend.Services
 {
     public interface IWarehouseService
-    {
+    {   // Для выпадающего списка на фронте (GET /api/warehouses)
         Task<IEnumerable<WarehouseDto>> GetAllAsync(CancellationToken cancellationToken);
+        // Проверка на верность warehouse_id
         Task<bool> ExistsAsync(int Id, CancellationToken cancellationToken);
     }
 
@@ -18,7 +19,8 @@ namespace Products_backend.Services
         {
             _context = context;
         }
-       
+
+        // Для выпадающего списка на фронте (GET /api/warehouses)
         public async Task<IEnumerable<WarehouseDto>> GetAllAsync(CancellationToken cancellationToken)
         {
             return await _context.Warehouses
@@ -29,7 +31,8 @@ namespace Products_backend.Services
             })
                 .ToListAsync(cancellationToken);
         }
-     
+
+        // Проверка на верность warehouse_id
         public async Task<bool> ExistsAsync(int id, CancellationToken cancellationToken)
         {
             return await _context.Warehouses.AnyAsync(w => w.Id == id, cancellationToken);

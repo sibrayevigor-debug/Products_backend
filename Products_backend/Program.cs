@@ -30,7 +30,6 @@ dbContext?.Database.Migrate();
 
 
 // ПОДКЛЮЧЕНИЕ MIDDLEWARE ДЛЯ SWAGGER
-// Рекомендуется включать Swagger только в среде разработки (Development)
 if (app.Environment.IsDevelopment())
 {
     // Включает генерацию документации в формате JSON
@@ -50,8 +49,5 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
-
-
-
 
 app.Run();

@@ -11,11 +11,12 @@ namespace Products_backend.Controllers
     {
         private readonly IWarehouseService _warehouseService;
 
-        public WarehouseController(WarehouseService warehouseService)
+        public WarehouseController(IWarehouseService warehouseService)
         {
             _warehouseService = warehouseService;
         }
 
+        // Для выпадающего списка на фронте (GET /api/warehouses)
         [HttpGet]
         public async Task<ActionResult<IEnumerable<WarehouseDto>>> Get(CancellationToken cancellationToken)
         {

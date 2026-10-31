@@ -6,9 +6,11 @@ using Products_backend.models;
 namespace Products_backend.Services
 {
     public interface IProductService
-    {
+    {    // Для списка в каталоге (GET /api/products)
         Task<IEnumerable<Product_catabologist_Dto>> GetCatalogAsync(CancellationToken cancellationToken);
+        // Для детальной записи (GET /api/products/{id})
         Task<Product_detailed_Dto?> GetByIdAsync(int Id, CancellationToken cancellationToken);
+        // Для добавления записи (POST /api/products)
         Task<Product_detailed_Dto> CreateAsync(Product_creation_Dto pcd, CancellationToken cancellationToken);
     }
 
@@ -21,6 +23,7 @@ namespace Products_backend.Services
             _context = context;
         }
 
+        // Для списка в каталоге (GET /api/products)
         public async Task<IEnumerable<Product_catabologist_Dto>> GetCatalogAsync(CancellationToken cancellationToken)
         {
             var products = await _context.Products
@@ -41,12 +44,14 @@ namespace Products_backend.Services
                  });
           }
 
+        // Для детальной записи (GET /api/products/{id})
         public async Task<Product_detailed_Dto?> GetByIdAsync(int Id, CancellationToken cancellationToken)
         {
             var products = await _context.Products
                .Include(p => p.Warehouse)
                .FirstOrDefaultAsync (p => p.Id == Id, cancellationToken);
 
+            // Проверка на верность Id
             if (products == null) return null;
 
             return new Product_detailed_Dto
@@ -66,11 +71,12 @@ namespace Products_backend.Services
                     Name = products.Warehouse.Name
                 }
             };
-
             }
 
+        // Для добавления записи (POST /api/products)
         public async Task<Product_detailed_Dto> CreateAsync(Product_creation_Dto pcd, CancellationToken cancellationToken)
             {
+            // Создание products
             var product = new Product
             {
                 Name = pcd.Name,
@@ -84,9 +90,10 @@ namespace Products_backend.Services
             };
             _context.Products.Add(product);
             await _context.SaveChangesAsync(cancellationToken);
-            // Подгружаем данные созданного склада
-            await _context.Entry(product).Reference(p =>  p.Warehouse).LoadAsync(cancellationToken);
 
+            // Подгружаем данные  склада
+            await _context.Entry(product).Reference(p =>  p.Warehouse).LoadAsync(cancellationToken);
+            // Возврашение созданого products
             return new Product_detailed_Dto
             {
                 Id = product.Id,

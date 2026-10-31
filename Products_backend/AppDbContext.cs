@@ -5,16 +5,17 @@ namespace Products_backend
 {
     public class AppDbContext : DbContext
     {
-        /// Конструктор для внедрения конфигурации (строки подключения) через Dependency Injection
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
-        {
-        }
-
         public DbSet<Warehouse> Warehouses => Set<Warehouse>();
         public DbSet<Product> Products => Set<Product>();
 
+        /// Конструктор для внедрения конфигурации (строки подключения) через Dependency Injection
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+        {
+
+        }
+
         // Тонкая настройка базы данных через Fluent API
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+       protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
@@ -44,8 +45,9 @@ namespace Products_backend
 
                 entity.Property(p => p.Quantity).IsRequired();
                 entity.Property(p => p.Length_mm).IsRequired();
-                entity.Property(p => p.Weight_kg).IsRequired();
+                entity.Property(p => p.Width_mm).IsRequired();
                 entity.Property(p => p.Height_mm).IsRequired();
+
 
                 entity.Property(p => p.Weight_kg)
                   .HasColumnType("decimal(8,3)").IsRequired();
