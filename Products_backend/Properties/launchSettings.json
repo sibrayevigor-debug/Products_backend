@@ -4,8 +4,9 @@
     "http": {
       "commandName": "Project",
       "dotnetRunMessages": true,
-      "launchBrowser": true,
-      "launchUrl": "swagger",
+      // для автоматического включения swagger поменяйтс launchBrowser с false на true и уберите двойной слэша у launchUrl
+      "launchBrowser": false,
+      //"launchUrl": "swagger",
       "applicationUrl": "http://localhost:5062",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
@@ -14,8 +15,9 @@
     "https": {
       "commandName": "Project",
       "dotnetRunMessages": true,
-      "launchBrowser": true,
-      "launchUrl": "swagger",
+      // для автоматического включения swagger поменяйтс launchBrowser с false на true и уберите двойной слэша у launchUrl
+      "launchBrowser": false,
+      //"launchUrl": "swagger",
       "applicationUrl": "https://localhost:7152;http://localhost:5062",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
