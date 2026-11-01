@@ -1,37 +1,50 @@
 # Product Catalog REST API
+
 Тестовое задание. Бэкэнд ASP.NET Core + SQL Разработка REST API системы учёта товаров
 
+
+
 #Технические особенности
+
 Фреймворк: ASP.NET Core 9.0 (Web API)
 База данных: SQL Server (LocalDB)
 ORM: Entity Framework Core (Code First)
 
 #Архитектура
+
 Разделение слоёв: Контроллер→ Сервис→ EF Core 
 Асинхронные методы, CancellationToken в контроллерах и сервисах
 Миграции применяются при старте (Database.Migrate())
-Настройка базы данных через Fluent API 
+Настройка базы данных через Fluent API  
 
 #Требования
-Установленный [.NET SDK 9.0]
+
+Установленный \[.NET SDK 9.0]
 Установленный компонент SQL Server Express LocalDB 
 
+ 
+
 #Клонирование репозитория и переход в папку
+
 bash
-https://github.com/sibrayevigor-debug/Products_backend.git
-cd Products_backend
+https://github.com/sibrayevigor-debug/Products\_backend.git
+cd Products\_backend
 
 #Запуск приложения
+
 Соберите проект и запустите веб-сервер. База данных `ProductsDB` будет создана локально при первом старте:
+
 bash
 dotnet build
 dotnet run
 
 #Адрес для Swagger
+
 https://localhost:7152/swagger
 https://localhost:5062/swagger
 
 #Основные эндпоинты
+
 GET /api/products — список для каталога
 GET /api/products/{id} — детальная карточка
 GET /api/warehouses — список складов (для выпадающего списка на фронте)
@@ -39,12 +52,14 @@ POST /api/products — создание записи продукта
 
 #Примеры curl для всех эндпоинтов
 
-* GET /api/products:
+GET /api/products:
+
 curl -X 'GET' \
   'https://localhost:7152/api/products' \
   -H 'accept: */*'
 
-* POST /api/products:
+POST /api/products:
+
 curl -X 'POST' \
   'https://localhost:7152/api/products' \
   -H 'accept: */*' \
@@ -58,16 +73,17 @@ curl -X 'POST' \
   "height_mm": 38,
   "weight_kg": 1,
   "warehouse_id": 1
-}'
+  }'
 
-* GET /api/products/{id}:
+GET /api/products/{id}:
+
 curl -X 'GET' \
   'https://localhost:7152/api/products/11' \
   -H 'accept: */*'
 
-*GET /api/warehouses:
+GET /api/warehouses:
+
 curl -X 'GET' \
   'https://localhost:7152/api/warehouse' \
   -H 'accept: */*'
-
 
