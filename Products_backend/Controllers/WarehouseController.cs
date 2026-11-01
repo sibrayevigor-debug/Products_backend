@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Products_backend.Data_Transfer_Objects;
-using Products_backend.models;
 using Products_backend.Services;
 
 namespace Products_backend.Controllers

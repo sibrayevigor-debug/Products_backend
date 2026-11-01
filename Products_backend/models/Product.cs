@@ -23,7 +23,6 @@ namespace Products_backend.models
         public decimal Weight_kg { get; set; }
         public int Warehouse_id { get; set; }
 
-        [ForeignKey(nameof(Warehouse_id))]
         public Warehouse Warehouse { get; set; } = null!;
 
         /// Атрибут [NotMapped] указывает EF Core, что это поле не нужно создавать в виде колонки в БД, 
