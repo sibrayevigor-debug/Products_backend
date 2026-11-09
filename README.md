@@ -24,17 +24,11 @@
 
 #Клонирование репозитория и переход в папку  
 
-  bash  
-  https://github.com/sibrayevigor-debug/Products\_backend.git  
-  cd Products\_backend  
 
-#Запуск приложения  
-
-Соберите проект и запустите веб-сервер. База данных `ProductsDB` будет создана локально при первом старте:  
-
-  bash  
+git clone https://github.com/sibrayevigor-debug/Products_backend.git  
+cd Products_backend  
   dotnet build  
-  dotnet run  
+  dotnet run --project Products_backend 
 
 #Адрес для Swagger  
 
