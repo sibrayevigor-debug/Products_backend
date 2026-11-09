@@ -4,49 +4,49 @@
 
 #Технические особенности
 
-  Фреймворк: ASP.NET Core 9.0 (Web API)
-  База данных: SQL Server (LocalDB)
-  ORM: Entity Framework Core (Code First)
+  Фреймворк: ASP.NET Core 9.0 (Web API)  
+  База данных: SQL Server (LocalDB)  
+  ORM: Entity Framework Core (Code First)  
 
 #Архитектура
 
-  Разделение слоёв: Контроллер→ Сервис→ EF Core 
-  Асинхронные методы, CancellationToken в контроллерах и сервисах
-  Миграции применяются при старте (Database.Migrate())
-  Настройка базы данных через Fluent API  
+  Разделение слоёв: Контроллер→ Сервис→ EF Core   
+  Асинхронные методы, CancellationToken в контроллерах и сервисах  
+  Миграции применяются при старте (Database.Migrate())  
+  Настройка базы данных через Fluent API    
 
 #Требования
 
-  Установленный \[.NET SDK 9.0]
-  Установленный компонент SQL Server Express LocalDB 
+  Установленный \[.NET SDK 9.0]  
+  Установленный компонент SQL Server Express LocalDB   
 
  
 
-#Клонирование репозитория и переход в папку
+#Клонирование репозитория и переход в папку  
 
-  bash
-  https://github.com/sibrayevigor-debug/Products\_backend.git
-  cd Products\_backend
+  bash  
+  https://github.com/sibrayevigor-debug/Products\_backend.git  
+  cd Products\_backend  
 
-#Запуск приложения
+#Запуск приложения  
 
-Соберите проект и запустите веб-сервер. База данных `ProductsDB` будет создана локально при первом старте:
+Соберите проект и запустите веб-сервер. База данных `ProductsDB` будет создана локально при первом старте:  
 
-  bash
-  dotnet build
-  dotnet run
+  bash  
+  dotnet build  
+  dotnet run  
 
-#Адрес для Swagger
+#Адрес для Swagger  
 
-  https://localhost:7152/swagger
-  https://localhost:5062/swagger
+  https://localhost:7152/swagger  
+  https://localhost:5062/swagger  
 
-#Основные эндпоинты
+#Основные эндпоинты  
 
-  GET /api/products — список для каталога
-  GET /api/products/{id} — детальная карточка
-  GET /api/warehouses — список складов (для выпадающего списка на фронте)
-  POST /api/products — создание записи продукта
+  GET /api/products — список для каталога  
+  GET /api/products/{id} — детальная карточка  
+  GET /api/warehouses — список складов (для выпадающего списка на фронте)  
+  POST /api/products — создание записи продукта  
 
 #Примеры curl для всех эндпоинтов
 
