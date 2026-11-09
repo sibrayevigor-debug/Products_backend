@@ -5,7 +5,7 @@ using Products_backend.Services;
 namespace Products_backend.Controllers
 {
     [ApiController]
-    [Route("api/warehouse")]
+    [Route("/api/warehouses")]
     public class WarehouseController : Controller
     {
         private readonly IWarehouseService _warehouseService;
