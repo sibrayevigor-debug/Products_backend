@@ -22,15 +22,14 @@
 
  
 
-#Клонирование репозитория и переход в папку  
-
+#Запуск 
 
 git clone https://github.com/sibrayevigor-debug/Products_backend.git  
 cd Products_backend  
-  dotnet build  
-  dotnet run --project Products_backend 
+dotnet build  
+dotnet run --project Products_backend --launch-profile https  
 
-#Адрес для Swagger  
+#После запуска приложение будет доступно по адресам 
 
   https://localhost:7152/swagger  
   https://localhost:5062/swagger  
