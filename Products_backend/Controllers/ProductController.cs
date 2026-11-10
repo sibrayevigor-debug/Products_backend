@@ -36,7 +36,7 @@ namespace Products_backend.Controllers
                 return NotFound(new ProblemDetails
                 {
                     Status = StatusCodes.Status404NotFound,
-                    Title = "Товар не найден"
+                    Title = "Product not found"
                 });
             return Ok(products);
         }
