@@ -37,7 +37,9 @@ namespace Products_backend.Data_Transfer_Objects
         public string Name { get; set; } = string.Empty;
 
         [Required]
-        [Range(0.01, double.MaxValue)]
+        [Range(typeof(decimal), "0.01", "9999999999.99",
+            ParseLimitsInInvariantCulture = true,
+            ConvertValueInInvariantCulture = true)]
         public decimal Price { get; set; }
 
         [Required]
@@ -57,7 +59,9 @@ namespace Products_backend.Data_Transfer_Objects
         public int Height_mm { get; set; }
 
         [Required]
-        [Range(1, int.MaxValue)]
+        [Range(typeof(decimal), "0.001", "99999.999",
+            ParseLimitsInInvariantCulture = true,
+            ConvertValueInInvariantCulture = true)]
         public decimal Weight_kg { get; set; }
 
         [Required]

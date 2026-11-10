@@ -76,6 +76,7 @@ namespace Products_backend.Services
         // Для добавления записи (POST /api/products)
         public async Task<Product_detailed_Dto> CreateAsync(Product_creation_Dto pcd, CancellationToken cancellationToken)
             {
+
             // Создание products
             var product = new Product
             {

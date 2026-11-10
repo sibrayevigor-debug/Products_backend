@@ -20,8 +20,6 @@
   Установленный \[.NET SDK 9.0]  
   Установленный компонент SQL Server Express LocalDB   
 
- 
-
 #Запуск 
 
 git clone https://github.com/sibrayevigor-debug/Products_backend.git  
@@ -38,43 +36,43 @@ dotnet run --project Products_backend --launch-profile https
 
   GET /api/products — список для каталога  
   GET /api/products/{id} — детальная карточка  
-  GET /api/warehouses — список складов (для выпадающего списка на фронте)  
-  POST /api/products — создание записи продукта  
+  GET /api/warehouses — список складов (для выпадающего списка на фронте)    
+  POST /api/products — создание записи продукта    
 
-#Примеры curl для всех эндпоинтов
+#Примеры curl для всех эндпоинтов  
 
-GET /api/products:
+GET /api/products:  
 
-curl -X 'GET' \
-  'https://localhost:7152/api/products' \
-  -H 'accept: */*'
+curl -X 'GET' \  
+  'https://localhost:7152/api/products' \  
+  -H 'accept: */*'  
 
-POST /api/products:
+POST /api/products:  
 
-curl -X 'POST' \
-  'https://localhost:7152/api/products' \
-  -H 'accept: */*' \
-  -H 'Content-Type: application/json' \
-  -d '{
-  "name": "Мышь",
-  "price": 1450.50,
-  "quantity": 3,
-  "length_mm": 120,
-  "width_mm": 65,
-  "height_mm": 38,
-  "weight_kg": 1,
-  "warehouse_id": 1
-  }'
+curl -X 'POST' \  
+  'https://localhost:7152/api/products' \  
+  -H 'accept: */*' \  
+  -H 'Content-Type: application/json' \  
+  -d '{  
+  "name": "Игровая мышь Logitech G102",  
+  "price": 2450.50,  
+  "quantity": 12,  
+  "length_mm": 116,  
+  "width_mm": 62,  
+  "height_mm": 38,  
+  "weight_kg": 0.085,  
+  "warehouse_id": 1  
+}'  
 
-GET /api/products/{id}:
+GET /api/products/{id}:  
 
-curl -X 'GET' \
-  'https://localhost:7152/api/products/11' \
-  -H 'accept: */*'
+curl -X 'GET' \  
+  'https://localhost:7152/api/products/15' \  
+  -H 'accept: */*'  
 
-GET /api/warehouses:
+GET /api/warehouses:  
 
-curl -X 'GET' \
-  'https://localhost:7152/api/warehouse' \
-  -H 'accept: */*'
+curl -X 'GET' \  
+  'https://localhost:7152/api/warehouses' \  
+  -H 'accept: */*'  
 
