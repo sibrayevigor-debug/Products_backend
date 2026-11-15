@@ -4,7 +4,7 @@
 
 #Технические особенности
 
-  Фреймворк: ASP.NET Core 9.0 (Web API)  
+  Фреймворк: ASP.NET Core 10.0 (Web API)  
   База данных: SQL Server (LocalDB)  
   ORM: Entity Framework Core (Code First)  
 
